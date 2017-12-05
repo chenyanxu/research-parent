@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>research-parent</artifactId>
+        <groupId>com.kalix.research</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>person-parent</artifactId>
+    <name>Kalix Research Person Parent</name>
+    <modules>
+        <module>research-person-entities</module>
+        <module>research-person-api</module>
+        <module>research-person-dao</module>
+        <module>research-person-biz</module>
+        <module>research-person-rest</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.research</groupId>
+                <artifactId>research-person-entities</artifactId>
+                <version>${project.research.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.research</groupId>
+                <artifactId>research-person-api</artifactId>
+                <version>${project.research.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

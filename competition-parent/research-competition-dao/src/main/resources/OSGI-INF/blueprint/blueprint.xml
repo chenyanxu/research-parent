@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- default-activation="lazy" -->
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
+
+    <!--展赛dao-->
+    <service id="competitionInfoBeanDao" ref="competitionInfoBeanDaoImpl" interface="com.kalix.research.competition.api.dao.ICompetitionInfoBeanDao"/>
+
+    <bean id="competitionInfoBeanDaoImpl"
+          class="com.kalix.research.competition.dao.CompetitionInfoBeanDaoImpl"> <!--init-method="init">-->
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+
+    <!--报名信息dao-->
+    <service id="signupBeanDao" ref="signupBeanDaoImpl" interface="com.kalix.research.competition.api.dao.ISignupBeanDao"/>
+
+    <bean id="signupBeanDaoImpl"
+          class="com.kalix.research.competition.dao.SignupBeanDaoImpl"> <!--init-method="init">-->
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+
+    <!--获奖信息dao-->
+    <service id="awardBeanDao" ref="awardBeanDaoImpl" interface="com.kalix.research.competition.api.dao.IAwardBeanDao"/>
+
+    <bean id="awardBeanDaoImpl"
+          class="com.kalix.research.competition.dao.AwardBeanDaoImpl"> <!--init-method="init">-->
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+</blueprint>

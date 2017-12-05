@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>system-parent</artifactId>
+        <groupId>com.kalix.research.system</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kalix.research.system.dict</groupId>
+    <artifactId>dict-parent</artifactId>
+    <name>Kalix Research System Dict Parent</name>
+    <modules>
+        <module>research-system-dict-entities</module>
+        <module>research-system-dict-api</module>
+        <module>research-system-dict-dao</module>
+        <module>research-system-dict-biz</module>
+        <module>research-system-dict-rest</module>
+    </modules>
+    <packaging>pom</packaging>
+
+</project>

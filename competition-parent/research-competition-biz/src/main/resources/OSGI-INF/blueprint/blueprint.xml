@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
+
+    <reference id="competitionInfoBeanDao" interface="com.kalix.research.competition.api.dao.ICompetitionInfoBeanDao"/>
+    <reference id="dictBeanService" interface="com.kalix.research.system.dict.api.biz.IResearchDictBeanService"/>
+    <reference id="userBeanService" interface="com.kalix.admin.core.api.biz.IUserBeanService"/>
+    <reference id="templateBeanService" interface="com.kalix.admin.template.api.biz.ITemplateBeanService"/>
+    <reference id="senderMessageBeanService" interface="com.kalix.common.message.api.biz.ISenderMessageBeanService"/>
+    <reference id="messageBeanService" interface="com.kalix.common.message.api.biz.IMessageBeanService"/>
+    <reference id="mailService" interface="com.kalix.middleware.mail.api.biz.IMailService"/>
+    <reference id="signupBeanDao" interface="com.kalix.research.competition.api.dao.ISignupBeanDao"/>
+    <reference id="awardBeanDao" interface="com.kalix.research.competition.api.dao.IAwardBeanDao"/>
+
+    <!--展赛信息服务注册-->
+    <bean id="competitionInfoBeanServiceImpl" class="com.kalix.research.competition.biz.CompetitionInfoBeanServiceImpl">
+        <property name="dao" ref="competitionInfoBeanDao"/>
+        <property name="dictBeanService" ref="dictBeanService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+        <property name="templateBeanService" ref="templateBeanService"/>
+        <property name="senderMessageBeanService" ref="senderMessageBeanService"/>
+        <property name="messageBeanService" ref="messageBeanService"/>
+        <property name="mailService" ref="mailService"/>
+    </bean>
+    <service id="competitionInfoBeanService" ref="competitionInfoBeanServiceImpl"
+             interface="com.kalix.research.competition.api.biz.ICompetitionInfoBeanService"/>
+    <!--报名信息服务注册-->
+    <bean id="signupBeanServiceImpl" class="com.kalix.research.competition.biz.SignupBeanServiceImpl">
+        <property name="dao" ref="signupBeanDao"/>
+        <property name="competitionInfoBeanService" ref="competitionInfoBeanServiceImpl"/>
+    </bean>
+    <service id="signupBeanService" ref="signupBeanServiceImpl"
+             interface="com.kalix.research.competition.api.biz.ISignupBeanService"/>
+    <!--获奖信息服务注册-->
+    <bean id="awardBeanServiceImpl" class="com.kalix.research.competition.biz.AwardBeanServiceImpl">
+        <property name="dao" ref="awardBeanDao"/>
+        <property name="competitionInfoBeanService" ref="competitionInfoBeanServiceImpl"/>
+        <property name="signupBeanService" ref="signupBeanServiceImpl"/>
+    </bean>
+    <service id="awardBeanService" ref="awardBeanServiceImpl"
+             interface="com.kalix.research.competition.api.biz.IAwardBeanService"/>
+</blueprint>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>research-parent</artifactId>
+        <groupId>com.kalix.research</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kalix.research.competition</groupId>
+    <artifactId>competition-parent</artifactId>
+    <name>Kalix Research Competition Parent</name>
+    <modules>
+        <module>research-competition-entities</module>
+        <module>research-competition-api</module>
+        <module>research-competition-dao</module>
+        <module>research-competition-biz</module>
+        <module>research-competition-rest</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.research.competition</groupId>
+                <artifactId>research-competition-entities</artifactId>
+                <version>${project.research.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.research.competition</groupId>
+                <artifactId>research-competition-api</artifactId>
+                <version>${project.research.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.research.system.dict</groupId>
+                <artifactId>research-system-dict-api</artifactId>
+                <version>${project.research.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.admin.template</groupId>
+                <artifactId>admin-template-api</artifactId>
+                <version>${project.admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.middleware.mail</groupId>
+                <artifactId>middleware-mail-api</artifactId>
+                <version>${project.middleware.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.common.message</groupId>
+                <artifactId>common-message-api</artifactId>
+                <version>${project.common.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

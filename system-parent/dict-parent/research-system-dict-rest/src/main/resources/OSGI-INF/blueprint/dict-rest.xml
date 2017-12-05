@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="researchDictBeanService"
+               interface="com.kalix.research.system.dict.api.biz.IResearchDictBeanService"/>
+    <camelContext id="researchDictCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+
+        <rest path="/research/dicts" consumes="application/json;charset=utf-8" produces="application/json">
+            <description>audit rest service</description>
+
+            <get id="route-getAllResearchDict" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all ResearchDict</description>
+                <to uri="bean:researchDictBeanService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+
+            <post id="route-addResearchDict" type="com.kalix.research.system.dict.entities.ResearchDictBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a ResearchDict</description>
+                <to uri="bean:researchDictBeanService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/research/dicts/{id}" consumes="application/json;charset=utf-8" produces="application/json">
+
+            <get id="route-getResearchDict" type="com.kalix.research.system.dict.entities.ResearchDictBean">
+                <description>Find ResearchDict by id</description>
+                <to uri="bean:researchDictBeanService?method=getEntity(${header.id})"/>
+            </get>
+
+            <put id="route-updateResearchDict" type="com.kalix.research.system.dict.entities.ResearchDictBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a ResearchDict</description>
+                <to uri="bean:researchDictBeanService?method=updateEntity"/>
+            </put>
+
+            <delete id="route-deleteResearchDict"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a ResearchDict</description>
+                <to uri="bean:researchDictBeanService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/research/dicts/cache/list" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getAllResearchDictInCache">
+                <description>Find all dicts</description>
+                <to uri="bean:researchDictBeanService?method=getAllEntity()"/>
+            </get>
+        </rest>
+        <rest path="/research/dicts/types/list" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getAllResearchDictTypes">
+                <description>Find all dicts</description>
+                <to uri="bean:researchDictBeanService?method=getDictTypes(${header.query})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
