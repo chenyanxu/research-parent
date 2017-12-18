@@ -63,20 +63,25 @@ public class StudentBeanServiceImpl extends ShiroGenericBizServiceImpl<IStudentB
         return true;
     }
 
-    @Override
+    /*@Override
     public StudentBean getEntity(long entityId) {
         Map<String, Object> maps = new HashMap<String, Object>();
         maps.put("userId/name/name", userBeanService);
-        maps.put("classId/className/name", organizationBeanService);
+        maps.put("majorId/majorName/name", organizationBeanService);
         return super.getEntity(entityId, maps);
-    }
+    }*/
 
-    @Override
+    /*@Override
     public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
         Map<String, Object> maps = new HashMap<String, Object>();
         maps.put("userId/name/name", userBeanService);
         maps.put("classId/className/name", organizationBeanService);
         return super.getAllEntityByQuery(queryDTO, maps);
+    }*/
+
+    @Override
+    public JsonData getAllEntityByQuery(Integer page, Integer limit, String jsonStr, String sort) {
+        return dao.getAllRelations(page, limit, jsonStr, sort);
     }
 
     public void setUserBeanService(IUserBeanService userBeanService) {

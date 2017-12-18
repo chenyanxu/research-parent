@@ -16,6 +16,7 @@
             to create a database to run the sample. This is not something that should be used in production.
             See also the create=true line in the ariestrader-derby-ds blueprint meta data -->
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
+            <property name="openjpa.Log" value="SQL=Info"/>
             <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
             <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
         </properties>

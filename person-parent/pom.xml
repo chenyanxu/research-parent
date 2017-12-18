@@ -17,6 +17,7 @@
         <module>research-person-dao</module>
         <module>research-person-biz</module>
         <module>research-person-rest</module>
+        <module>research-person-dto</module>
     </modules>
     <packaging>pom</packaging>
 

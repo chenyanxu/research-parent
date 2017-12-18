@@ -5,6 +5,7 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package: com.kalix.framework.core.api.biz,\
                 com.kalix.framework.core.api.persistence,\
-                com.kalix.research.person.entities,*
+                com.kalix.research.person.entities,\
+                com.kalix.research.person.dto.model,*
 Include-Resource: target/classes
 Bundle-Category: Kalix Research Person

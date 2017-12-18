@@ -1,79 +1,46 @@
-package com.kalix.research.person.entities;
+package com.kalix.research.person.dto.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kalix.framework.core.api.persistence.PersistentEntity;
-import io.swagger.annotations.ApiModel;
+import com.kalix.framework.core.api.web.model.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
 
 /**
- * Created by Administrator on 2017/3/3.
+ * 学生信息模型类
+ * @author hqj date:2017-12-15
+ * @version 1.0.0
  */
-@Entity
-@Table(name = "research_person_student")
-@ApiModel("学生<br>StudentBean")
-public class StudentBean extends PersistentEntity {
-    @ApiModelProperty(value = "用户id", example = "1")
-    @Column(unique = true)
-    private Long userId;      //与用户关联id
-    @Transient
-    private String code;   //学号
-    @Transient
-    private String name;   //姓名
-    @Transient
-    private String sex;    //性别
-    @Transient
-    private String email;  //邮箱
-    @Transient
-    private String phone;  //固定电话
-    @Transient
-    private String mobile; //手机
-    /*@ApiModelProperty(value="学院", position = 5, example = "软件学院")
-    private String college;*/
-    @ApiModelProperty(value = "专业id", example = "1")
-    private Long majorId;
-    @Transient
-    private String majorName; //专业名称
-    /*@ApiModelProperty(value = "班级id", position = 3, example = "000000000")
-    private Long classId;
-    @Transient
-    private String className;*/
-    @ApiModelProperty(value = "辅导员", example = "王老师")
-    private String instructor;
-    @ApiModelProperty(value = "身份证号", example = "220***************")
-    private String identificationCard;
-    @ApiModelProperty(value = "出生日期", example = "2010-02-01")
+public class StudentDTO extends BaseDTO {
+    private Long userId;               //与用户关联id
+    private String code;       //学号
+    private String name;       //姓名
+    private String sex;        //性别
+    private String email;      //邮箱
+    private String phone;      //固定电话
+    private String mobile;     //手机
+    private Long majorId;              //专业id
+    private String majorName;          //专业名称
+    private String instructor;         //辅导员
+    private String identificationCard; //身份证号
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date birthday;
-    @ApiModelProperty(value = "民族", example = "汉族")
-    private String nation;
-    @ApiModelProperty(value = "籍贯", example = "吉林省")
-    private String placeOfOrigin;
-    @ApiModelProperty(value = "政治面貌", example = "中共党员")
-    private String politicalStatus;
-    @ApiModelProperty(value = "入党团时间", example = "2010-02-01")
+    private Date birthday;             //出生日期
+    private String nation;             //民族
+    private String placeOfOrigin;      //籍贯
+    private String politicalStatus;    //政治面貌
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date joinPartyDate;
-    @ApiModelProperty(value = "联系地址", example = "吉林省长春市")
-    private String address;
-    @ApiModelProperty(value = "邮政编码", example = "130000")
-    private String postalcode;
-    @ApiModelProperty(value = "家庭联系电话", example = "18866667777")
-    private String homePhone;
-    @ApiModelProperty(value = "生源省份", example = "吉林省")
-    private String province;
-    @ApiModelProperty(value = "入学年份", example = "2017")
+    private Date joinPartyDate;        //入党团时间
+    private String address;            //联系地址
+    private String postalcode;         //邮政编码
+    private String homePhone;          //家庭联系电话
+    private String province;           //生源省份
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy", timezone = "GMT+8")
-    private Date entranceYear;
-    @ApiModelProperty(value = "学生培养层次", example = "本科")
-    private String trainingLevel;
-    @ApiModelProperty(value = "学习年限", example = "4")
-    private String period;
+    private Date entranceYear;       //入学年份
+    private String trainingLevel;      //学生培养层次
+    private String period;             //学习年限
+    private Long version_;             //版本控制
 
     public Long getUserId() {
         return userId;
@@ -257,5 +224,13 @@ public class StudentBean extends PersistentEntity {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public Long getVersion_() {
+        return version_;
+    }
+
+    public void setVersion_(Long version_) {
+        this.version_ = version_;
     }
 }
