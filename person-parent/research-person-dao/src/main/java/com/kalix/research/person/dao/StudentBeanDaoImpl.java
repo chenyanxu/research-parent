@@ -17,7 +17,7 @@ public class StudentBeanDaoImpl extends BaseAdminDao<StudentBean,Long> implement
                 " (select b.id, a.id as userId, a.code, a.name, a.sex, a.email, a.phone, a.mobile, " +
                 " b.majorId, b.instructor, b.identificationCard, b.birthday, b.nation, b.placeOfOrigin, " +
                 " b.politicalStatus, b.joinPartyDate, b.address, b.postalcode, b.homePhone, b.province, " +
-                " b.entranceYear, b.trainingLevel, b.period, b.version_, c.name as majorName " +
+                " b.entranceYear, b.trainingLevel, b.period, b.version_, c.name as majorName, b.updateDate " +
                 " from sys_user a " +
                 " left join " + super.getTableName() + " b on a.id = b.userid " +
                 " left join sys_organization c on b.majorId = c.id " +
