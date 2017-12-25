@@ -4,18 +4,38 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
     <reference id="studentService" interface="com.kalix.research.person.api.biz.IStudentBeanService"/>
+    <reference id="scoreService" interface="com.kalix.art.candidate.api.biz.IScoreBeanService"/>
 
     <bean id="researchstudentRoute" class="com.kalix.framework.core.impl.camel.BaseRouteBuilder">
         <property name="beanName" value="com.kalix.research.person.entities.StudentBean"/>
         <property name="rests">
             <list>
-                <!--<bean class="com.kalix.framework.core.api.camel.CustomRest">
-                    <property name="path" value="/teachers/loginname/{loginname}"/>
-                    <property name="getDescription" value="查询登录名是否存在"/>
-                    <property name="getParams" value="loginname:path:string::登录名"/>
-                    <property name="getOutType" value="java.lang.Boolean"/>
-                    <property name="getToUri" value="bean:teacherService?method=existTeacherBeanByLoginName(${header.loginname})"/>
-                </bean>-->
+                <bean class="com.kalix.framework.core.api.camel.CustomRest">
+                    <property name="path" value="/students/{id}/scores"/>
+                    <property name="getDescription" value="获得指定学生id下的所有课程成绩"/>
+                    <property name="getOutType" value="java.util.List"/>
+                    <property name="getToUri" value="bean:scoreService?method=getEntitiesByFK(${header.id},${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+
+                    <property name="postDescription" value="保存指定学生id的课程成绩"/>
+                    <property name="inType" value="com.kalix.art.candidate.entities.ScoreBean"/>
+                    <property name="postOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
+                    <property name="postToUri"
+                              value="bean:scoreService?method=saveEntityByFK(${header.id},${body})"/>
+                </bean>
+                <bean class="com.kalix.framework.core.api.camel.CustomRest">
+                    <property name="path" value="/students/{studentId}/scores/{id}"/>
+
+                    <property name="putDescription" value="修改指定学生id的课程成绩"/>
+                    <property name="inType" value="com.kalix.art.candidate.entities.ScoreBean"/>
+                    <property name="putOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
+                    <property name="putToUri"
+                              value="bean:scoreService?method=updateEntityByFK(${header.studentId},${body})"/>
+
+                    <property name="deleteDescription" value="删除指定学生id的课程成绩"/>
+                    <property name="deleteOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
+                    <property name="deleteToUri"
+                              value="bean:scoreService?method=deleteEntityByFK(${header.studentId},${header.id})"/>
+                </bean>
             </list>
         </property>
     </bean>
