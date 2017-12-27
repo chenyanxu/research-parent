@@ -35,9 +35,9 @@ public class StudentDTO extends BaseDTO {
     private String address;            //联系地址
     private String postalcode;         //邮政编码
     private String homePhone;          //家庭联系电话
-    private String province;           //生源省份
+    private Integer province;          //生源省份
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy", timezone = "GMT+8")
-    private Date entranceYear;       //入学年份
+    private Date entranceYear;         //入学年份
     private String trainingLevel;      //学生培养层次
     private String period;             //学习年限
     private Long version_;             //版本控制
@@ -194,11 +194,11 @@ public class StudentDTO extends BaseDTO {
         this.homePhone = homePhone;
     }
 
-    public String getProvince() {
+    public Integer getProvince() {
         return province;
     }
 
-    public void setProvince(String province) {
+    public void setProvince(Integer province) {
         this.province = province;
     }
 

@@ -66,7 +66,7 @@ public class StudentBean extends PersistentEntity {
     @ApiModelProperty(value = "家庭联系电话", example = "18866667777")
     private String homePhone;
     @ApiModelProperty(value = "生源省份", example = "吉林省")
-    private String province;
+    private Integer province; //字典[省份]
     @ApiModelProperty(value = "入学年份", example = "2017")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy", timezone = "GMT+8")
     private Date entranceYear;
@@ -227,11 +227,11 @@ public class StudentBean extends PersistentEntity {
         this.homePhone = homePhone;
     }
 
-    public String getProvince() {
+    public Integer getProvince() {
         return province;
     }
 
-    public void setProvince(String province) {
+    public void setProvince(Integer province) {
         this.province = province;
     }
 
