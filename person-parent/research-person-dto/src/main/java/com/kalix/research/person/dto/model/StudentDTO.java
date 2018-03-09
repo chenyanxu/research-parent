@@ -41,6 +41,7 @@ public class StudentDTO extends BaseDTO {
     private String trainingLevel;      //学生培养层次
     private String period;             //学习年限
     private Long version_;             //版本控制
+    private Long createById;           //创建者id
 
     public Long getUserId() {
         return userId;
@@ -232,5 +233,13 @@ public class StudentDTO extends BaseDTO {
 
     public void setVersion_(Long version_) {
         this.version_ = version_;
+    }
+
+    public Long getCreateById() {
+        return createById;
+    }
+
+    public void setCreateById(Long createById) {
+        this.createById = createById;
     }
 }
