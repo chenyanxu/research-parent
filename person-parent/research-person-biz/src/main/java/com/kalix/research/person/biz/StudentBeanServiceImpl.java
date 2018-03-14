@@ -91,7 +91,7 @@ public class StudentBeanServiceImpl extends ShiroGenericBizServiceImpl<IStudentB
                 " b.majorId, b.instructor, b.identificationCard, b.birthday, b.nation, b.placeOfOrigin, " +
                 " b.politicalStatus, b.joinPartyDate, b.address, b.postalcode, b.homePhone, b.province, " +
                 " b.entranceYear, b.trainingLevel, b.period, b.version_, c.name as majorName, b.creationDate, b.updateDate, " +
-                " a.id as createbyid " +
+                " a.id as createById, b.className " +
                 " from sys_user a " +
                 " left join " + this.dao.getTableName() + " b on a.id = b.userid " +
                 " left join sys_organization c on b.majorId = c.id " +

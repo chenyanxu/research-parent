@@ -23,6 +23,7 @@ public class StudentDTO extends BaseDTO {
     private String mobile;     //手机
     private Long majorId;              //专业id
     private String majorName;          //专业名称
+    private String className;          //班级名称
     private String instructor;         //辅导员
     private String identificationCard; //身份证号
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT+8")
@@ -241,5 +242,13 @@ public class StudentDTO extends BaseDTO {
 
     public void setCreateById(Long createById) {
         this.createById = createById;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

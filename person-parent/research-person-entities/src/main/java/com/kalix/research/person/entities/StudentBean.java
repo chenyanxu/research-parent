@@ -41,8 +41,9 @@ public class StudentBean extends PersistentEntity {
     private String majorName; //专业名称
     /*@ApiModelProperty(value = "班级id", position = 3, example = "000000000")
     private Long classId;
-    @Transient
-    private String className;*/
+    @Transient*/
+    @ApiModelProperty(value = "班级名称", example = "2014级数字影视艺术3班")
+    private String className;
     @ApiModelProperty(value = "辅导员", example = "王老师")
     private String instructor;
     @ApiModelProperty(value = "身份证号", example = "220***************")
@@ -257,5 +258,13 @@ public class StudentBean extends PersistentEntity {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }
