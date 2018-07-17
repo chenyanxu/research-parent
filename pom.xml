@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>core-parent</module>
-        <module>person-parent</module>
         <module>system-parent</module>
         <module>competition-parent</module>
     </modules>
