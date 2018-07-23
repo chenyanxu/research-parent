@@ -18,7 +18,7 @@ public class SignupBean extends PersistentEntity {
     @ApiModelProperty(value = "展赛信息id", example = "3330202")
     private Long competitionId;
     @Transient
-    private String competitionName;
+    private String competitionName; // 展赛名称
     @ApiModelProperty(value = "姓名", example = "张三")
     private String name;
     @ApiModelProperty(value = "拼音", example = "zhangsan")
@@ -33,7 +33,7 @@ public class SignupBean extends PersistentEntity {
     @ApiModelProperty(value = "身份证号", example = "220521199010103")
     private String identificationCard;
     @ApiModelProperty(value = "省份", example = "吉林省")
-    private Integer province;  // 省，字典[省份]
+    private Integer province;  // 省份，字典[省份]
     @ApiModelProperty(value = "城市", example = "长春市")
     private String city;
     @ApiModelProperty(value = "笔名", example = "笔名")

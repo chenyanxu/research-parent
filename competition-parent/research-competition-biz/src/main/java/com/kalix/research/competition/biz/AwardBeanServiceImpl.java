@@ -9,8 +9,8 @@ import com.kalix.research.competition.api.biz.ICompetitionInfoBeanService;
 import com.kalix.research.competition.api.biz.ISignupBeanService;
 import com.kalix.research.competition.api.dao.IAwardBeanDao;
 import com.kalix.research.competition.entities.AwardBean;
+import com.kalix.research.competition.entities.CompetitionInfoBean;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -42,16 +42,25 @@ public class AwardBeanServiceImpl extends ShiroGenericBizServiceImpl<IAwardBeanD
 
     @Override
     public AwardBean getEntity(long entityId) {
-        Map<String, Object> maps = new HashMap<>();
-        maps.put("competitionId/competitionName/name", competitionInfoBeanService);
-        return super.getEntity(entityId, maps);
+        AwardBean awardBean = super.getEntity(entityId);
+        // 关联查询多字段赋值
+        CompetitionInfoBean competitionInfoBean = competitionInfoBeanService.getEntity(awardBean.getCompetitionId());
+        awardBean.setCompetitionName(competitionInfoBean.getName());
+        awardBean.setCompetitionType(competitionInfoBean.getType());
+        return awardBean;
     }
 
     @Override
     public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
-        Map<String, Object> maps = new HashMap<>();
-        maps.put("competitionId/competitionName/name", competitionInfoBeanService);
-        return super.getAllEntityByQuery(queryDTO, maps);
+        JsonData jsonData = super.getAllEntityByQuery(queryDTO);
+        // 关联查询多字段赋值
+        for (int i = 0; i < jsonData.getData().size(); i++) {
+            AwardBean awardBean = (AwardBean) jsonData.getData().get(i);
+            CompetitionInfoBean competitionInfoBean = competitionInfoBeanService.getEntity(awardBean.getCompetitionId());
+            ((AwardBean) jsonData.getData().get(i)).setCompetitionName(competitionInfoBean.getName());
+            ((AwardBean) jsonData.getData().get(i)).setCompetitionType(competitionInfoBean.getType());
+        }
+        return jsonData;
     }
 
     public void setCompetitionInfoBeanService(ICompetitionInfoBeanService competitionInfoBeanService) {
