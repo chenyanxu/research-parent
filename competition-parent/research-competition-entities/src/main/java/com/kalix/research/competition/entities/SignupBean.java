@@ -15,91 +15,91 @@ import java.util.Date;
 @Table(name = "research_signup")
 @ApiModel("报名信息<br>SignupBean")
 public class SignupBean extends PersistentEntity {
-    @ApiModelProperty(value = "展赛信息id", position = 0, example = "3330202")
+    @ApiModelProperty(value = "展赛信息id", example = "3330202")
     private Long competitionId;
     @Transient
     private String competitionName;
-    @ApiModelProperty(value = "姓名", position = 1, example = "张三")
+    @ApiModelProperty(value = "姓名", example = "张三")
     private String name;
-    @ApiModelProperty(value = "拼音", position = 2, example = "zhangsan")
+    @ApiModelProperty(value = "拼音", example = "zhangsan")
     private String phoneticize;
-    @ApiModelProperty(value = "性别", position = 3, example = "男")
-    private String sex;
-    @ApiModelProperty(value = "出生日期", position = 4, example = "2010-02-01")
+    @ApiModelProperty(value = "性别", example = "1")
+    private Integer sex;       // 性别，字典[性别]
+    @ApiModelProperty(value = "出生日期", example = "2010-02-01")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date birthday;
-    @ApiModelProperty(value = "国籍", position = 5, example = "中国")
+    @ApiModelProperty(value = "国籍", example = "中国")
     private String nationality;
-    @ApiModelProperty(value = "身份证号", position = 6, example = "220521199010103")
+    @ApiModelProperty(value = "身份证号", example = "220521199010103")
     private String identificationCard;
-    @ApiModelProperty(value = "省", position = 7, example = "吉林省")
-    private String province;
-    @ApiModelProperty(value = "城市", position = 8, example = "长春市")
+    @ApiModelProperty(value = "省份", example = "吉林省")
+    private Integer province;  // 省，字典[省份]
+    @ApiModelProperty(value = "城市", example = "长春市")
     private String city;
-    @ApiModelProperty(value = "笔名", position = 9, example = "笔名")
+    @ApiModelProperty(value = "笔名", example = "笔名")
     private String penName;
-    @ApiModelProperty(value = "作者简介", position = 10, example = "作者简介")
+    @ApiModelProperty(value = "作者简介", example = "作者简介")
     @Lob
     private String authorIntroduction;
-    @ApiModelProperty(value = "通讯地址", position = 11, example = "吉林省长春市朝阳区")
+    @ApiModelProperty(value = "通讯地址", example = "吉林省长春市朝阳区")
     private String postalAddress;
-    @ApiModelProperty(value = "邮政编码", position = 12, example = "130000")
+    @ApiModelProperty(value = "邮政编码", example = "130000")
     private String postalCode;
-    @ApiModelProperty(value = "移动电话", position = 13, example = "15123222323")
+    @ApiModelProperty(value = "移动电话", example = "15123222323")
     private String mobilePhone;
-    @ApiModelProperty(value = "固定电话", position = 14, example = "0431-3333443")
+    @ApiModelProperty(value = "固定电话", example = "0431-3333443")
     private String fixedPhone;
-    @ApiModelProperty(value = "电子邮箱", position = 15, example = "739854544@qq.com")
+    @ApiModelProperty(value = "电子邮箱", example = "739854544@qq.com")
     private String email;
-    @ApiModelProperty(value = "QQ", position = 16, example = "7434332")
+    @ApiModelProperty(value = "QQ", example = "7434332")
     private String qq;
-    @ApiModelProperty(value = "传真", position = 17, example = "334232")
+    @ApiModelProperty(value = "传真", example = "334232")
     private String fax;
-    @ApiModelProperty(value = "微博", position = 18, example = "weibo@sina.cn")
+    @ApiModelProperty(value = "微博", example = "weibo@sina.cn")
     private String microBlog;
-    @ApiModelProperty(value = "其他联系方式", position = 19, example = "34333222")
+    @ApiModelProperty(value = "其他联系方式", example = "34333222")
     private String otherContactWay;
-    @ApiModelProperty(value = "所在学校", position = 20, example = "动画学院")
+    @ApiModelProperty(value = "所在学校", example = "动画学院")
     private String school;
-    @ApiModelProperty(value = "专业/班级", position = 21, example = "动画设计101")
+    @ApiModelProperty(value = "专业/班级", example = "动画设计101")
     private String majorClass;
-    @ApiModelProperty(value = "网址", position = 22, example = "http://lujing")
+    @ApiModelProperty(value = "网址", example = "http://lujing")
     private String url;
-    @ApiModelProperty(value = "团队中文名称", position = 23, example = "拼搏小队")
+    @ApiModelProperty(value = "团队中文名称", example = "拼搏小队")
     private String teamCnName;
-    @ApiModelProperty(value = "团队英文名称", position = 24, example = "fighting")
+    @ApiModelProperty(value = "团队英文名称", example = "fighting")
     private String teamEnName;
-    @ApiModelProperty(value = "团队联系人", position = 25, example = "张三")
+    @ApiModelProperty(value = "团队联系人", example = "张三")
     private String teamContacter;
-    @ApiModelProperty(value = "团队所在地", position = 26, example = "吉林省长春市动画学院")
+    @ApiModelProperty(value = "团队所在地", example = "吉林省长春市动画学院")
     private String teamAddress;
-    @ApiModelProperty(value = "作品中文名称", position = 27, example = "前进的蜗牛")
+    @ApiModelProperty(value = "作品中文名称", example = "前进的蜗牛")
     private String worksCnName;
-    @ApiModelProperty(value = "作品英文名称", position = 28, example = "going on")
+    @ApiModelProperty(value = "作品英文名称", example = "going on")
     private String worksEnName;
-    @ApiModelProperty(value = "作品介绍", position = 29, example = "作品介绍")
+    @ApiModelProperty(value = "作品介绍", example = "作品介绍")
     @Lob
     private String worksIntroduction;
-    @ApiModelProperty(value = "出品国家", position = 30, example = "中国")
+    @ApiModelProperty(value = "出品国家", example = "中国")
     private String country;
-    @ApiModelProperty(value = "获奖情况", position = 31, example = "7396333@qq.com")
+    @ApiModelProperty(value = "获奖情况", example = "7396333@qq.com")
     private String award;
-    @ApiModelProperty(value = "播出情况", position = 32, example = "在播")
+    @ApiModelProperty(value = "播出情况", example = "在播")
     private String broadcasting;
-    @ApiModelProperty(value = "指导教师", position = 33, example = "张老师")
+    @ApiModelProperty(value = "指导教师", example = "张老师")
     private String tutor;
-    @ApiModelProperty(value = "制作完成时间", position = 34, example = "2017-11-23")
+    @ApiModelProperty(value = "制作完成时间", example = "2017-11-23")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date finishingDate;
-    @ApiModelProperty(value = "作品时长", position = 35, example = "10分钟")
+    @ApiModelProperty(value = "作品时长", example = "10分钟")
     private String lengthOfWork;
-    @ApiModelProperty(value = "版权所有者", position = 36, example = "张三")
+    @ApiModelProperty(value = "版权所有者", example = "张三")
     private String copyrightOwner;
-    @ApiModelProperty(value = "出品单位", position = 37, example = "动画学院")
+    @ApiModelProperty(value = "出品单位", example = "动画学院")
     private String unit;
-    @ApiModelProperty(value = "出品单位联系人", position = 38, example = "李老师")
+    @ApiModelProperty(value = "出品单位联系人", example = "李老师")
     private String unitContacter;
-    @ApiModelProperty(value = "主创人员", position = 39, example = "王老师")
+    @ApiModelProperty(value = "主创人员", example = "王老师")
     private String creator;
 
     public Long getCompetitionId() {
@@ -134,11 +134,11 @@ public class SignupBean extends PersistentEntity {
         this.phoneticize = phoneticize;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -166,11 +166,11 @@ public class SignupBean extends PersistentEntity {
         this.identificationCard = identificationCard;
     }
 
-    public String getProvince() {
+    public Integer getProvince() {
         return province;
     }
 
-    public void setProvince(String province) {
+    public void setProvince(Integer province) {
         this.province = province;
     }
 

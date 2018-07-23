@@ -4,7 +4,6 @@ import com.kalix.framework.core.util.SerializeUtil;
 import com.kalix.framework.core.util.StringUtils;
 import com.kalix.research.competition.api.dao.ICompetitionInfoBeanDao;
 import com.kalix.research.competition.api.query.CompetitionChartDTO;
-import com.kalix.research.competition.entities.CompetitionInfoBean;
 
 import java.util.ArrayList;
 import java.util.Date;

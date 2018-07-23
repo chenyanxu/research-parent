@@ -15,21 +15,19 @@ import java.util.Date;
 @Table(name = "research_award")
 @ApiModel("获奖信息<br>AwardBean")
 public class AwardBean extends PersistentEntity {
-    @ApiModelProperty(value = "展赛id", position = 0, example = "30002")
+    @ApiModelProperty(value = "展赛id", example = "30002")
     private Long competitionId;
     @Transient
-    private String competitionName;
-    @ApiModelProperty(value = "展赛类别", position = 1, example = "动画类")
-    private Integer competitionType;
-    @ApiModelProperty(value = "报名id", position = 2, example = "10002")
-    private Long signupId;
+    private String competitionName;  // 展赛名称
     @Transient
-    private Long signupName;
-    @ApiModelProperty(value = "获奖人", position = 3, example = "10002")
+    private Integer competitionType; // 展赛类别，字典[展赛类别]
+    @ApiModelProperty(value = "报名id", example = "10002")
+    private Long signupId;
+    @ApiModelProperty(value = "获奖人", example = "10002")
     private String awardName;
-    @ApiModelProperty(value = "获奖级别", position = 4, example = "三等奖")
+    @ApiModelProperty(value = "获奖级别", example = "三等奖")
     private String awardLevel;
-    @ApiModelProperty(value = "备注", position =5, example = "备注")
+    @ApiModelProperty(value = "备注", example = "备注")
     @Lob
     private String remark;
 
@@ -39,6 +37,14 @@ public class AwardBean extends PersistentEntity {
 
     public void setCompetitionId(Long competitionId) {
         this.competitionId = competitionId;
+    }
+
+    public String getCompetitionName() {
+        return competitionName;
+    }
+
+    public void setCompetitionName(String competitionName) {
+        this.competitionName = competitionName;
     }
 
     public Integer getCompetitionType() {

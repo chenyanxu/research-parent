@@ -15,7 +15,6 @@ import com.kalix.framework.core.api.system.IDictBeanService;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
 import com.kalix.framework.core.util.Assert;
 import com.kalix.framework.core.util.JNDIHelper;
-import com.kalix.framework.core.util.SerializeUtil;
 import com.kalix.middleware.mail.api.MailContent;
 import com.kalix.middleware.mail.api.biz.IMailService;
 import com.kalix.research.competition.api.biz.ICompetitionInfoBeanService;
@@ -143,7 +142,7 @@ public class CompetitionInfoBeanServiceImpl extends ShiroGenericBizServiceImpl<I
             //content = templateBean.getContent();
             content.append("展赛名称：" + entity.getName() + "<br>");
             String typeLabel = "";
-            ResearchDictBean researchDictBean = (ResearchDictBean) dictBeanService.getByTypeAndValue("展赛类型", entity.getType());
+            ResearchDictBean researchDictBean = (ResearchDictBean) dictBeanService.getByTypeAndValue("展赛类别", entity.getType());
             if (researchDictBean != null && researchDictBean.getLabel() != null) {
                 typeLabel = researchDictBean.getLabel();
             }

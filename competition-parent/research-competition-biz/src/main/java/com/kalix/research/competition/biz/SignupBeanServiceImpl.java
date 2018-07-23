@@ -10,7 +10,6 @@ import com.kalix.research.competition.api.dao.ISignupBeanDao;
 import com.kalix.research.competition.entities.SignupBean;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

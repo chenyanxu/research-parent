@@ -1,6 +1,5 @@
 package com.kalix.research.competition.biz;
 
-
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.web.model.QueryDTO;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
@@ -11,7 +10,8 @@ import com.kalix.research.competition.api.biz.ISignupBeanService;
 import com.kalix.research.competition.api.dao.IAwardBeanDao;
 import com.kalix.research.competition.entities.AwardBean;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by fj on 2017-8-17.
@@ -24,6 +24,7 @@ public class AwardBeanServiceImpl extends ShiroGenericBizServiceImpl<IAwardBeanD
     public AwardBeanServiceImpl() {
         super.init(AwardBean.class.getName());
     }
+
     /**
      * 获奖信息统计
      *
@@ -33,10 +34,9 @@ public class AwardBeanServiceImpl extends ShiroGenericBizServiceImpl<IAwardBeanD
      * @return
      */
     @Override
-    public JsonData getStatistics(Integer page, Integer limit, String jsonStr, String sort){
+    public JsonData getStatistics(Integer page, Integer limit, String jsonStr, String sort) {
         Map<String, String> jsonMap = SerializeUtil.json2Map(jsonStr);
         //jsonMap.put("userId", String.valueOf(this.getShiroService().getCurrentUserId()));
-
         return super.getAllEntityByQuery(page, limit, SerializeUtil.serializeJson(jsonMap), sort);
     }
 
@@ -44,7 +44,6 @@ public class AwardBeanServiceImpl extends ShiroGenericBizServiceImpl<IAwardBeanD
     public AwardBean getEntity(long entityId) {
         Map<String, Object> maps = new HashMap<>();
         maps.put("competitionId/competitionName/name", competitionInfoBeanService);
-        maps.put("signupId/signupName/name", signupBeanService);
         return super.getEntity(entityId, maps);
     }
 
@@ -52,7 +51,6 @@ public class AwardBeanServiceImpl extends ShiroGenericBizServiceImpl<IAwardBeanD
     public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
         Map<String, Object> maps = new HashMap<>();
         maps.put("competitionId/competitionName/name", competitionInfoBeanService);
-        maps.put("signupId/signupName/name", signupBeanService);
         return super.getAllEntityByQuery(queryDTO, maps);
     }
 
